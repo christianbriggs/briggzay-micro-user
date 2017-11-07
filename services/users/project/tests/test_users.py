@@ -42,7 +42,7 @@ class TestUserService(BaseTestCase):
                 '/users',
                 data=json.dumps({
                     'username': 'michael',
-                    'email': 'michael@realpython.com',
+                    'email': 'briggzay@gmail.com',
                     'password': 'test'
                 }),
                 content_type='application/json',
@@ -50,7 +50,7 @@ class TestUserService(BaseTestCase):
             )
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 201)
-            self.assertIn('michael@realpython.com was added!', data['message'])
+            self.assertIn('briggzay@gmail.com was added!', data['message'])
             self.assertIn('success', data['status'])
 
     def test_add_user_invalid_json(self):
@@ -104,7 +104,7 @@ class TestUserService(BaseTestCase):
             response = self.client.post(
                 '/users',
                 data=json.dumps({
-                    'email': 'michael@realpython.com',
+                    'email': 'briggzay@gmail.com',
                     'password': 'test'
                 }),
                 content_type='application/json',
@@ -139,7 +139,7 @@ class TestUserService(BaseTestCase):
                 '/users',
                 data=json.dumps({
                     'username': 'michael',
-                    'email': 'michael@realpython.com'
+                    'email': 'briggzay@gmail.com'
                 }),
                 content_type='application/json',
                 headers={'Authorization': f'Bearer {token}'}
@@ -170,7 +170,7 @@ class TestUserService(BaseTestCase):
                 '/users',
                 data=json.dumps({
                     'username': 'michael',
-                    'email': 'michael@realpython.com',
+                    'email': 'briggzay@gmail.com',
                     'password': 'test'
                 }),
                 content_type='application/json',
@@ -180,7 +180,7 @@ class TestUserService(BaseTestCase):
                 '/users',
                 data=json.dumps({
                     'username': 'michael',
-                    'email': 'michael@realpython.com',
+                    'email': 'briggzay@gmail.com',
                     'password': 'test'
                 }),
                 content_type='application/json',
@@ -194,13 +194,13 @@ class TestUserService(BaseTestCase):
 
     def test_single_user(self):
         """Ensure get single user behaves correctly."""
-        user = add_user('michael', 'michael@realpython.com', 'test')
+        user = add_user('michael', 'briggzay@gmail.com', 'test')
         with self.client:
             response = self.client.get(f'/users/{user.id}')
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 200)
             self.assertIn('michael', data['data']['username'])
-            self.assertIn('michael@realpython.com', data['data']['email'])
+            self.assertIn('briggzay@gmail.com', data['data']['email'])
             self.assertIn('success', data['status'])
 
     def test_single_user_no_id(self):
@@ -223,8 +223,8 @@ class TestUserService(BaseTestCase):
 
     def test_all_users(self):
         """Ensure get all users behaves correctly."""
-        add_user('michael', 'michael@realpython.com', 'test')
-        add_user('fletcher', 'fletcher@realpython.com', 'test')
+        add_user('michael', 'briggzay@gmail.com', 'test')
+        add_user('fletcher', 'briggzarro@gmail.com', 'test')
         with self.client:
             response = self.client.get('/users')
             data = json.loads(response.data.decode())
@@ -232,12 +232,12 @@ class TestUserService(BaseTestCase):
             self.assertEqual(len(data['data']['users']), 2)
             self.assertIn('michael', data['data']['users'][0]['username'])
             self.assertIn(
-                'michael@realpython.com', data['data']['users'][0]['email'])
+                'briggzay@gmail.com', data['data']['users'][0]['email'])
             self.assertTrue(data['data']['users'][0]['active'])
             self.assertFalse(data['data']['users'][0]['admin'])
             self.assertIn('fletcher', data['data']['users'][1]['username'])
             self.assertIn(
-                'fletcher@realpython.com', data['data']['users'][1]['email'])
+                'briggzarro@gmail.com', data['data']['users'][1]['email'])
             self.assertTrue(data['data']['users'][1]['active'])
             self.assertFalse(data['data']['users'][1]['admin'])
             self.assertIn('success', data['status'])
@@ -253,8 +253,8 @@ class TestUserService(BaseTestCase):
     def test_main_with_users(self):
         """Ensure the main route behaves correctly when users have been
         added to the database."""
-        add_user('michael', 'michael@realpython.com', 'test')
-        add_user('fletcher', 'fletcher@realpython.com', 'test')
+        add_user('michael', 'briggzay@gmail.com', 'test')
+        add_user('fletcher', 'briggzarro@gmail.com', 'test')
         with self.client:
             response = self.client.get('/')
             self.assertEqual(response.status_code, 200)
@@ -270,7 +270,7 @@ class TestUserService(BaseTestCase):
                 '/',
                 data=dict(
                     username='michael',
-                    email='michael@realpython.com',
+                    email='briggzay@gmail.com',
                     password='test'
                 ),
                 follow_redirects=True
@@ -300,7 +300,7 @@ class TestUserService(BaseTestCase):
                 '/users',
                 data=json.dumps({
                     'username': 'michael',
-                    'email': 'michael@realpython.com',
+                    'email': 'briggzay@gmail.com',
                     'password': 'test'
                 }),
                 content_type='application/json',
@@ -328,7 +328,7 @@ class TestUserService(BaseTestCase):
                 '/users',
                 data=json.dumps({
                     'username': 'michael',
-                    'email': 'michael@realpython.com',
+                    'email': 'briggzay@gmail.com',
                     'password': 'test'
                 }),
                 content_type='application/json',

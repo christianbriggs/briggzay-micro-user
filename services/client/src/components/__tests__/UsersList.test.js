@@ -8,7 +8,7 @@ const users = [
   {
     'active': true,
     'admin': false,
-    'email': 'michael@realpython.com',
+    'email': 'briggzay@gmail.com',
     'id': 1,
     'username': 'michael'
   },
@@ -46,7 +46,7 @@ test('UsersList renders properly', () => {
   const td = wrapper.find('tbody > tr > td');
   expect(td.length).toBe(10);
   expect(td.get(0).props.children).toBe(1);
-  expect(td.get(1).props.children).toBe('michael@realpython.com');
+  expect(td.get(1).props.children).toBe('briggzay@gmail.com');
   expect(td.get(2).props.children).toBe('michael');
   expect(td.get(3).props.children).toBe('true');
   expect(td.get(4).props.children).toBe('false');

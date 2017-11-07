@@ -67,7 +67,7 @@ def seed_db():
     """Seeds the database."""
     db.session.add(User(
         username='michael',
-        email='michael@realpython.com',
+        email='briggzay@gmail.com',
         password='test'
     ))
     db.session.add(User(
