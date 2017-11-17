@@ -14,7 +14,7 @@ before_install:
 
 before_script:
   - export REACT_APP_USERS_SERVICE_URL=http://127.0.0.1
-  - curl -H 'Authorization: token ea88cb006e493ee112b3c761fba2d9d4346ce129' -H 'x-yipeeio-context: 0bf78708-9fc1-11e7-b6d0-bf365885928e' https://app.yipee.io/api/download/ComposeV3/2cbb5ff6-bfff-11e7-8210-d745d4f27927
+  - curl -H https://app.yipee.io/api/download/ComposeV3/2cbb5ff6-bfff-11e7-8210-d745d4f27927
   - docker-compose -f docker-compose-dev.yml up --build -d
 
 script:
